@@ -84,13 +84,22 @@ class PieChartViewController: DemoBaseViewController {
         set.drawIconsEnabled = false
         set.sliceSpace = 2
         
-        
         set.colors = ChartColorTemplates.vordiplom()
             + ChartColorTemplates.joyful()
             + ChartColorTemplates.colorful()
             + ChartColorTemplates.liberty()
             + ChartColorTemplates.pastel()
             + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
+        
+        set.dt_lineColors = ChartColorTemplates.vordiplom()
+            + ChartColorTemplates.joyful()
+            + ChartColorTemplates.colorful()
+            + ChartColorTemplates.liberty()
+            + ChartColorTemplates.pastel()
+            + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
+        //数据位置
+        set.xValuePosition = .insideSlice
+        set.yValuePosition = .outsideSlice
         
         let data = PieChartData(dataSet: set)
         

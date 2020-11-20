@@ -78,6 +78,9 @@ open class PieChartDataSet: ChartDataSet, PieChartDataSetProtocol
 
     /// When valuePosition is OutsideSlice, indicates line color
     open var valueLineColor: NSUIColor? = NSUIColor.black
+    
+    /// 折线颜色数组
+    open var dt_lineColors: [NSUIColor]? = []
 
     /// When valuePosition is OutsideSlice and enabled, line will have the same color as the slice
     open var useValueColorForLine: Bool = false
@@ -106,6 +109,18 @@ open class PieChartDataSet: ChartDataSet, PieChartDataSetProtocol
     /// the color for the highlighted sector
     open var highlightColor: NSUIColor? = nil
 
+    public func dt_lineColor(atIndex index: Int) -> NSUIColor {
+        guard let colors = dt_lineColors else {
+            return NSUIColor.black
+        }
+        var index = index
+        if index < 0
+        {
+            index = 0
+        }
+        return colors[index % colors.count]
+    }
+    
     // MARK: - NSCopying
 
     open override func copy(with zone: NSZone? = nil) -> Any
@@ -116,6 +131,7 @@ open class PieChartDataSet: ChartDataSet, PieChartDataSetProtocol
         copy.selectionShift = selectionShift
         copy.xValuePosition = xValuePosition
         copy.yValuePosition = yValuePosition
+        copy.dt_lineColors = dt_lineColors
         copy.valueLineColor = valueLineColor
         copy.valueLineWidth = valueLineWidth
         copy.valueLinePart1OffsetPercentage = valueLinePart1OffsetPercentage

@@ -448,7 +448,11 @@ open class PieChartRenderer: NSObject, DataRenderer
 
                     DrawLine: do
                     {
-                        if dataSet.useValueColorForLine
+                        if dataSet.dt_lineColors != nil
+                        {
+                            context.setStrokeColor(dataSet.dt_lineColor(atIndex: j).cgColor)
+                        }
+                        else if dataSet.useValueColorForLine
                         {
                             context.setStrokeColor(dataSet.color(atIndex: j).cgColor)
                         }

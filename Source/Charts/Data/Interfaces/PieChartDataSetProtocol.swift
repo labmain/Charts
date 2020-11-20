@@ -30,7 +30,10 @@ public protocol PieChartDataSetProtocol: ChartDataSetProtocol
 
     var xValuePosition: PieChartDataSet.ValuePosition { get set }
     var yValuePosition: PieChartDataSet.ValuePosition { get set }
-
+    
+    /// 折线颜色数组
+    var dt_lineColors: [NSUIColor]? { get set }
+    
     /// When valuePosition is OutsideSlice, indicates line color
     var valueLineColor: NSUIColor? { get set }
 
@@ -60,5 +63,8 @@ public protocol PieChartDataSetProtocol: ChartDataSetProtocol
 
     /// get/sets the color for the highlighted sector
     var highlightColor: NSUIColor? { get set }
+    
+    /// 获取折线的颜色
+    func dt_lineColor(atIndex: Int) -> NSUIColor
 
 }
